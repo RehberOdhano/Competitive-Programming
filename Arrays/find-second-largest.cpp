@@ -4,6 +4,18 @@ using namespace std;
 #define ll long long int
 #define MOD 1000000007
 
+// returns the second largest element in the array, if
+// present otherwise returns -1
+int findSecondLargestElementUsingSet(vector<int>&numbers, int n) {
+	set<int>values;
+	for(int number : numbers) {
+		values.insert(number);
+	}
+	n = values.size();
+	return values.size() == 1 ? -1 : *(next(values.begin(), (n-2)));
+}
+
+// working 50/50
 // returns the second largest element of the array, if
 // present otherwise returns -1
 // solved using two-pointer approach
@@ -71,7 +83,7 @@ int main() {
 		for(int i = 0; i < n; i++) {
 			cin>>numbers[i];
 		}
-		cout<<"Case #"<<testCase<<": "<<findSecondLargestElement(numbers, n)<<endl;
+		cout<<"Case #"<<testCase<<": "<<findSecondLargestElementUsingSet(numbers, n)<<endl;
 		testCase++;
 	}
 
