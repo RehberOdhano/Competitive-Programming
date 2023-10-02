@@ -9,7 +9,7 @@ using namespace std;
 // present, then return -1;
 
 // array manipulation
-int  findUniqueElementUsingXOR(vector<int>&numbers, int n) {
+int findUniqueElementUsingXOR(vector<int>&numbers, int n) {
 	int ans = numbers[0];
 	for(int i = 1; i < n; i++) {
 		cout<<(ans ^ numbers[i])<<" ";
