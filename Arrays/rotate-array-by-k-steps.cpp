@@ -20,6 +20,31 @@ void rotateArrayByKSteps(vector<int>&numbers, int n, int k) {
 	} 
 }
 
+// rotating the given array by k-steps using two-pointers
+// O(n)
+void rotateArrayByKStepsUsingTwoPointers(vector<int>&numbers, int n, int k) {
+	if(n == 1 || k == 0 || k == n) return;
+	
+	int numberOfRightTurns = 0;
+	int left = 0, mid = 0, right = 0;
+	int temp1 = 0, temp2 = 0;
+
+	if(k > n) {
+		if(k % n == 0) return;
+		else {
+			// calculating the actual number of turns to rotate 
+			// the array to the right
+			numberOfRightTurns = (k % n);
+			if(n == 2) {
+				while(numberOfRightTurns--) {
+					swap(numbers[0], numbers[1]);
+				}
+				return;
+			}
+		}
+	}
+}
+
 int main() {
 
 	// FAST I/O
@@ -38,7 +63,7 @@ int main() {
 		for(int i = 0; i < n; i++) {
 			cin>>numbers[i];
 		}
-		rotateArrayByKSteps(numbers, n, k);
+		rotateArrayByKStepsUsingTwoPointers(numbers, n, k);
 		for(int number : numbers) {
 			cout<<number<<" ";
 		}
