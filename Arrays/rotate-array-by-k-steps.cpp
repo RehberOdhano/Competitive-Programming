@@ -20,29 +20,37 @@ void rotateArrayByKSteps(vector<int>&numbers, int n, int k) {
 	} 
 }
 
-// rotating the given array by k-steps using two-pointers
-// O(n)
-void rotateArrayByKStepsUsingTwoPointers(vector<int>&numbers, int n, int k) {
-	if(n == 1 || k == 0 || k == n) return;
-	
-	int numberOfRightTurns = 0;
-	int left = 0, mid = 0, right = 0;
-	int temp1 = 0, temp2 = 0;
+// rotating the given array by k-steps using O(n) space
+// constraints:
+// 1 <= n <= 10^5
+// 0 <= k <= 10^5
+vector<int> rotateArrayByKStepsUsingAnotherArray(vector<int>numbers, int  n, int k) {
+	vector<int>rotatedArray(n);
 
-	if(k > n) {
-		if(k % n == 0) return;
-		else {
-			// calculating the actual number of turns to rotate 
-			// the array to the right
-			numberOfRightTurns = (k % n);
-			if(n == 2) {
-				while(numberOfRightTurns--) {
-					swap(numbers[0], numbers[1]);
-				}
-				return;
-			}
-		}
+	int lastIndex = 0;
+	for(int i = (n-k), j = 0; i < n; i++, j++) {
+		rotatedArray[j] = numbers[i];
+		lastIndex = j;
 	}
+
+	lastIndex++;
+	for(int i = 0; i < (n-k); i++) {
+		rotatedArray[lastIndex] = numbers[i];
+		lastIndex++;
+	}
+
+	return rotatedArray;
+}
+
+// rotating the given array by k-steps to the right in O(n) 
+// time with constant space O(1) 
+// the value of k be greater than, less than or equal to n
+void rotateArrayByKStepsUsingReverse(vector<int>&numbers, int n, int k) {
+	if(n == 1 || k == 0 || k == n) return;
+	k %= n;
+	reverse(numbers.begin(), numbers.end());
+	reverse(numbers.begin(), numbers.begin() + k);
+	reverse(numbers.begin() + k, numbers.end());
 }
 
 int main() {
@@ -63,7 +71,8 @@ int main() {
 		for(int i = 0; i < n; i++) {
 			cin>>numbers[i];
 		}
-		rotateArrayByKStepsUsingTwoPointers(numbers, n, k);
+		rotateArrayByKStepsUsingReverse(numbers, n, k);
+		// vector<int>result = rotateArrayByKStepsUsingAnotherArray(numbers, n, k);
 		for(int number : numbers) {
 			cout<<number<<" ";
 		}
