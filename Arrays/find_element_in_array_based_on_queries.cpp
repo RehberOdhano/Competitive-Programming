@@ -31,8 +31,8 @@ void manipulateTheArray(vector<int>&numbers, int n, vector<vector<int>>&queries)
 		vector<int>queryArr = queries[i];
 		queryType = queryArr[0];
 
-		int x = 0, y = 0;
-		int index1 = 0, index2 = 0;
+		/*int x = 0, y = 0;
+		int index1 = 0, index2 = 0;*/
 		switch(queryType) {
 			case 1:
 				isArrayReversed *= -1;
@@ -41,9 +41,9 @@ void manipulateTheArray(vector<int>&numbers, int n, vector<vector<int>>&queries)
 				if(isArrayReversed == -1) cout<<(n - mp[queryArr[1]] - 1)<<endl;
 				else cout<<mp[queryArr[1]]<<endl;
 				break;		
-			case 3:
-				queryArr[1], y = queryArr[2];
-				index1 = x, index2 = y;
+			case 3: {
+				int x = queryArr[1], y = queryArr[2];
+				int index1 = x, index2 = y;
 				if(isArrayReversed == -1) {
 					x = n - x - 1;
 					y = n - y - 1;	
@@ -55,6 +55,7 @@ void manipulateTheArray(vector<int>&numbers, int n, vector<vector<int>>&queries)
 				swap(numbers[index1], numbers[index2]);
 				swap(mp[x], mp[y]);
 				break;
+			}
 			default:
 				cout<<"Query type is invalid"<<endl;
 				break;		
