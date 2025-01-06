@@ -4,6 +4,33 @@
 #include<vector>
 using namespace std;
 
+// bool canThreePartsEqualSum(vector<int>& arr) {
+//     int i = 0, k = arr.size() - 1;
+//     int partOneSum = arr[i], partTwoSum = arr[k], partThreeSum = 0;
+
+//     while(i < k) {
+//         if(partOneSum < partTwoSum) {
+//             i++;
+//             partOneSum += arr[i];
+//         } else if(partOneSum > partTwoSum) {
+//             k--;
+//             partTwoSum += arr[k];
+//         } else break;
+//     }
+
+//     if(i < k) {
+//         int j = i + 1;
+//         while(j < k) {
+//             partThreeSum += arr[j];
+//             j++;
+//         }
+//     }
+
+//     if(partOneSum == partTwoSum && partTwoSum == partThreeSum) return true;
+
+//     return false;
+// }
+
 bool canThreePartsEqualSum(vector<int>& arr) {
 	int i = 0, k = arr.size() - 1;
 	int partOneSum = arr[i], partTwoSum = arr[k], partThreeSum = 0;

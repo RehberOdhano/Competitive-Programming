@@ -1,18 +1,5 @@
 // Leetcode Problem 03: Longest Substring Without Repeating Characters
 
-// 11
-// abcabcbb
-// bbbbb
-// pwwkew
-// aabbef
-// c
-// bb
-// ab
-// dvdf
-// pwwkkewsw
-// tmmzuxt
-// wobgrovw
-
 #include<iostream>
 #include<vector>
 #include<unordered_map>
